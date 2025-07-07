@@ -45,3 +45,34 @@ function typeCode() {
 window.onload = () => {
   typeCode();
 };
+
+
+
+function spawnBats(num = 10) {
+  const container = document.getElementById('bats-container');
+
+  for (let i = 0; i < num; i++) {
+    const bat = document.createElement('img');
+    bat.src = 'bat-symbol.png'; // your local image
+    bat.classList.add('bat');
+
+    // Random initial position
+    bat.style.top = `${Math.random() * 100}vh`;
+    bat.style.left = `${Math.random() * 100}vw`;
+
+    // Random animation direction and speed
+    const x = `${Math.random() * 200 - 100}vw`;
+    const y = `${Math.random() * 200 - 100}vh`;
+    bat.style.setProperty('--x', x);
+    bat.style.setProperty('--y', y);
+    bat.style.animationDuration = `${5 + Math.random() * 10}s`;
+
+    container.appendChild(bat);
+  }
+}
+
+// 👇 Already existing function call; now add bat spawn
+window.onload = () => {
+  typeCode();
+  spawnBats(12); // Number of flying bats
+};

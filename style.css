@@ -37,11 +37,21 @@ header {
   z-index: 1;
 }
 
-header .logo {
-  width: 80px;
-  filter: invert(1);
-  margin-bottom: 10px;
+.floating-logo {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  z-index: 999;
+  filter: drop-shadow(0 0 10px #000);
+  transition: transform 0.3s ease;
 }
+
+.floating-logo:hover {
+  transform: translateX(-50%) scale(1.1);
+}
+
 
 h1 {
   font-size: 3em;
@@ -85,3 +95,31 @@ footer {
   color: #888;
   background-color: rgba(0, 0, 0, 0.4);
 }
+
+
+#bats-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+}
+
+.bat {
+  position: absolute;
+  width: 40px;
+  opacity: 0.8;
+  animation: fly linear infinite;
+}
+
+@keyframes fly {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) rotate(360deg);
+  }
+}
+

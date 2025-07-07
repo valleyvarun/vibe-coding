@@ -31,6 +31,14 @@ function typeCode() {
       currentChar = 0;
     }
     setTimeout(typeCode, 50);
+  } else {
+    // Wait 1 second and restart
+    setTimeout(() => {
+      typingElement.innerHTML = '';
+      currentLine = 0;
+      currentChar = 0;
+      typeCode();
+    }, 1000);
   }
 }
 
